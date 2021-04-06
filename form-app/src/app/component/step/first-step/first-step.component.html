@@ -1,0 +1,56 @@
+<div class="grid-container">
+    <mat-card class="dashboard-card">
+        <div class="row">
+            <mat-label>Jūsų/šeimos grynosios mėnesio pajamos</mat-label>
+        </div>
+        <mat-slider
+            thumbLabel
+            [displayWith]="euroLabel"
+            [step]="50"
+            min="350"
+            max="5000"
+            [(value)]="form.income">
+        </mat-slider>
+        ({{form.income + ' €'}})
+        <div class="row">
+            <mat-label>Jūsų/šeimos visų finansinių įsipareigojimų įmoka per mėn.</mat-label>
+        </div>
+        <mat-slider
+            thumbLabel
+            [displayWith]="euroLabel"
+            [step]="50"
+            min="0"
+            max="1000"
+            [(value)]="form.commitment">
+        </mat-slider>
+        ({{form.commitment + ' €'}})
+        <div class="row">
+            <mat-label>Pageidaujama paskolos suma</mat-label>
+        </div>
+        <mat-slider
+            thumbLabel
+            [displayWith]="euroLabel"
+            [step]="100"
+            min="500"
+            max="20000"
+            [(value)]="form.loan">
+        </mat-slider>
+        ({{form.loan + ' €'}})
+        <div class="row">
+            <mat-label>Paskolos grąžinimo terminas</mat-label>
+        </div>
+        <mat-slider
+            thumbLabel
+            [displayWith]="yearLabel"
+            [step]="1"
+            min="1"
+            max="5"
+            [(value)]="form.term">
+        </mat-slider>
+        ({{form.term + ' metai'}})
+        <div class="row">
+            <button mat-raised-button color="primary" (click)="validate()">Kitas</button>
+        </div>
+    </mat-card>
+</div>
+

@@ -1,0 +1,74 @@
+<div *ngIf="form" class="grid-container">
+    <mat-card class="dashboard-card">
+        <mat-card-header>
+            <mat-card-title>
+                Apžvalga!
+            </mat-card-title>
+        </mat-card-header>
+    </mat-card>
+    <mat-card class="dashboard-card">
+        <mat-card-header>
+            <mat-card-title>
+                Piniginė situacija
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Jūsų/šeimos grynosios mėnesio pajamos - {{form.firstStepForm.income}} € <br>
+                Jūsų/šeimos visų finansinių įsipareigojimų įmoka per mėn. - {{form.firstStepForm.commitment}} € <br>
+                Pageidaujama paskolos suma - {{form.firstStepForm.loan}} € <br>
+                Paskolos grąžinimo terminas - {{form.firstStepForm.term}} metai <br>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card">
+        <mat-card-header>
+            <mat-card-title>
+                Būsto tipas
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Tipas - {{getType()}} <br>
+                Kambariai - {{form.secondStepForm.roomCount}} <br>
+                Pastatymo metai - {{form.secondStepForm.constructionYear}} metai <br>
+                Energijos klasė - {{getEnergyClass()}} <br>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card">
+        <mat-card-header>
+            <mat-card-title>
+                Šeimyninė situacija
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Ar turite vaikų? - {{getBoolean(form.thirdStepForm.children)}} <br>
+                <span *ngIf="form.thirdStepForm.children">Kiek? - {{form.thirdStepForm.amount}} <br></span>
+                <span *ngIf="form.thirdStepForm.children">Vaikų amžiai - ({{form.thirdStepForm.ageRangeFrom}} iki {{form.thirdStepForm.ageRangeTo}}) <br></span>
+                <span *ngIf="!form.thirdStepForm.children">Ar planuojate? - {{getBoolean(form.thirdStepForm.planning)}} <br> </span>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card">
+        <mat-card-header>
+            <mat-card-title>
+                Įvertinimas
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Kaip patiko klausimynas? - {{getReview(form.fourthStepForm.review)}} <br>
+                Sukonkretinimas - {{getSecondReview(form.fourthStepForm.reviewFollowup)}} <br>
+                <span *ngIf="form.fourthStepForm.reviewFollowup == 9">Kita - {{form.fourthStepForm.otherReason}} <br></span>
+                Ar rekomenduotumėte kitiems? - {{getBoolean(form.fourthStepForm.wouldRecommend)}} <br>
+            </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-card">
+        <mat-card-content>
+            <button mat-raised-button color="primary" (click)="reset()">Pildyti iš naujo</button>
+        </mat-card-content>
+    </mat-card>
+</div>

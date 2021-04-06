@@ -1,0 +1,58 @@
+<div class="grid-container">
+    <form [formGroup]="formGroup" novalidate (ngSubmit)="validate(formGroup.valid)">
+        <mat-card class="dashboard-card">
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Tipas" formControlName="type">
+                        <mat-option *ngFor="let type of typeList" [(value)]="type.id">
+                            {{ type.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['type'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.type">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Kambariai" formControlName="roomCount">
+                        <mat-option *ngFor="let roomCount of roomCountList" [(value)]="roomCount.id">
+                            {{ roomCount.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['roomCount'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.roomCount">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Pastatymo metai" formControlName="constructionYear">
+                        <mat-option *ngFor="let constructionYear of constructionYearList" [(value)]="constructionYear.id">
+                            {{ constructionYear.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['constructionYear'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.constructionYear">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Energijos klasė" formControlName="energyClass">
+                        <mat-option *ngFor="let energyClass of energyClassList" [(value)]="energyClass.id">
+                            {{ energyClass.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['energyClass'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="danger" type="button" (click)="goBack()">Atgal</button>
+                <button mat-raised-button color="primary" type="submit">Kitas</button>
+            </div>
+        </mat-card>
+    </form>
+</div>

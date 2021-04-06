@@ -1,0 +1,31 @@
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTab" class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="Piniginė situacija" [disabled]="isDisabled(0)">
+        <app-first-step 
+        [(form)]="form.firstStepForm"
+        [stepNumber]="0"
+        (nextValidChange)="changeNextValid($event)"
+        ></app-first-step>
+    </mat-tab>
+    <mat-tab label="Būsto tipas" [disabled]="isDisabled(1)">
+        <app-second-step
+        [(form)]="form.secondStepForm"
+        [stepNumber]="1"
+        (nextValidChange)="changeNextValid($event)"
+        ></app-second-step>
+    </mat-tab>
+    <mat-tab label="Šeimyninė situacija" [disabled]="isDisabled(2)">
+        <app-third-step
+        [(form)]="form.thirdStepForm"
+        [stepNumber]="2"
+        (nextValidChange)="changeNextValid($event)"
+        ></app-third-step>
+    </mat-tab>
+    <mat-tab label="Įvertinkite" [disabled]="isDisabled(3)">
+        <app-fourth-step
+        [(form)]="form.fourthStepForm"
+        [stepNumber]="3"
+        (nextValidChange)="changeNextValid($event)"
+        (finished)="finished()"
+        ></app-fourth-step>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,55 @@
+<div class="grid-container">
+    <form [formGroup]="formGroup" novalidate (ngSubmit)="showConfirmation()">
+        <mat-card class="dashboard-card">
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Kaip patiko klausimynas?" (selectionChange)="reviewSelected()" formControlName="review">
+                        <mat-option *ngFor="let item of reviewFirstList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['review'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.review">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Sukonkretinkite" (selectionChange)="reviewSecondSelected()" formControlName="reviewFollowup">
+                        <mat-option *ngFor="let item of reviewFollowupList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['reviewFollowup'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row"  *ngIf="displayOther && formGroup.value.reviewFollowup">
+                <mat-form-field class="full-width">
+                  <input matInput placeholder="Kita" formControlName="otherReason">
+                  <mat-error *ngIf="formGroup.controls['otherReason'].hasError('required')">
+                    <strong>Privaloma!</strong>
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="(!displayOther || formGroup.value.otherReason) && formGroup.value.reviewFollowup">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Ar rekomenduotumėte kitiems?" formControlName="wouldRecommend">
+                        <mat-option *ngFor="let item of booleanList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['wouldRecommend'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="danger" type="button" (click)="goBack()">Atgal</button>
+                <button mat-raised-button color="primary" type="submit">Pabaigti</button>
+            </div>
+        </mat-card>
+    </form>
+</div>
+

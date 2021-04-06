@@ -1,0 +1,29 @@
+<div class="grid-container">
+    <form [formGroup]="introForm" (ngSubmit)="goToForm(introForm.valid)">
+        <mat-card class="dashboard-card">
+            <mat-card-header>
+                <mat-card-title>
+                    Sveiki! Atsakydami kelis klausimus, mums padėsite apskaičiuoti jums geriausias sąlygas!
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+                <p>
+                    Šis trumpas klausimynas susidės iš 4 žinsgnių! 
+                </p>
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field class="full-width">
+                      <input matInput placeholder="Vardas" formControlName="name">
+                      <mat-error *ngIf="introForm.controls['name'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row margin-small-top">
+                    <button mat-raised-button color="primary" type="submit">Pradėti</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>

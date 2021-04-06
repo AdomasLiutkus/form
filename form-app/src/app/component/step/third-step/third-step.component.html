@@ -1,0 +1,62 @@
+<div class="grid-container">
+    <form [formGroup]="formGroup" novalidate (ngSubmit)="validate()">
+        <mat-card class="dashboard-card">
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Ar turite vaikų?" formControlName="children">
+                        <mat-option *ngFor="let item of booleanList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['children'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.children != undefined && formGroup.value.children">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Kiek?" formControlName="amount">
+                        <mat-option *ngFor="let item of amountList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['amount'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.children != undefined && formGroup.value.amount">
+                <mat-form-field class="partial-width">
+                    <mat-label>Vaikų amžiai</mat-label>
+                    <input matInput type="number" maxlength="2" placeholder="Nuo" formControlName="ageRangeFrom">
+                    <mat-error *ngIf="formGroup.controls['ageRangeFrom'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+                -
+                <mat-form-field class="partial-width">
+                    <input matInput type="number" maxlength="2" placeholder="Iki" formControlName="ageRangeTo">
+                    <mat-error *ngIf="formGroup.controls['ageRangeTo'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row" *ngIf="formGroup.value.children != undefined && !formGroup.value.children">
+                <mat-form-field class="full-width">
+                    <mat-select placeholder="Ar planuojate?" formControlName="planning">
+                        <mat-option *ngFor="let item of booleanList" [(value)]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.controls['planning'].hasError('required')">
+                        <strong>Privaloma!</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="danger" type="button" (click)="goBack()">Atgal</button>
+                <button mat-raised-button color="primary" type="submit">Kitas</button>
+            </div>
+        </mat-card>
+    </form>
+</div>
