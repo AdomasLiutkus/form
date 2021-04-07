@@ -10,6 +10,8 @@ import { BaseStepComponent } from '../base-step-component';
 export class FirstStepComponent extends BaseStepComponent implements OnInit {
   @Input()
   form: FirstStepForm = new FirstStepForm();
+  @Output()
+  formChange: EventEmitter<FirstStepForm> = new EventEmitter<FirstStepForm>();
 
   constructor() {
     super();

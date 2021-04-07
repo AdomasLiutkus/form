@@ -4,7 +4,7 @@
             <div class="row">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Tipas" formControlName="type">
-                        <mat-option *ngFor="let type of typeList" [(value)]="type.id">
+                        <mat-option *ngFor="let type of typeList" [value]="type.id">
                             {{ type.name }}
                         </mat-option>
                     </mat-select>
@@ -16,7 +16,7 @@
             <div class="row" *ngIf="formGroup.value.type">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Kambariai" formControlName="roomCount">
-                        <mat-option *ngFor="let roomCount of roomCountList" [(value)]="roomCount.id">
+                        <mat-option *ngFor="let roomCount of roomCountList" [value]="roomCount.id">
                             {{ roomCount.name }}
                         </mat-option>
                     </mat-select>
@@ -28,7 +28,7 @@
             <div class="row" *ngIf="formGroup.value.roomCount">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Pastatymo metai" formControlName="constructionYear">
-                        <mat-option *ngFor="let constructionYear of constructionYearList" [(value)]="constructionYear.id">
+                        <mat-option *ngFor="let constructionYear of constructionYearList" [value]="constructionYear.id">
                             {{ constructionYear.name }}
                         </mat-option>
                     </mat-select>
@@ -40,7 +40,7 @@
             <div class="row" *ngIf="formGroup.value.constructionYear">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Energijos klasė" formControlName="energyClass">
-                        <mat-option *ngFor="let energyClass of energyClassList" [(value)]="energyClass.id">
+                        <mat-option *ngFor="let energyClass of energyClassList" [value]="energyClass.id">
                             {{ energyClass.name }}
                         </mat-option>
                     </mat-select>

@@ -4,7 +4,7 @@
             <div class="row">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Ar turite vaikų?" formControlName="children">
-                        <mat-option *ngFor="let item of booleanList" [(value)]="item.id">
+                        <mat-option *ngFor="let item of booleanList" [value]="item.id">
                             {{ item.name }}
                         </mat-option>
                     </mat-select>
@@ -16,7 +16,7 @@
             <div class="row" *ngIf="formGroup.value.children != undefined && formGroup.value.children">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Kiek?" formControlName="amount">
-                        <mat-option *ngFor="let item of amountList" [(value)]="item.id">
+                        <mat-option *ngFor="let item of amountList" [value]="item.id">
                             {{ item.name }}
                         </mat-option>
                     </mat-select>
@@ -44,7 +44,7 @@
             <div class="row" *ngIf="formGroup.value.children != undefined && !formGroup.value.children">
                 <mat-form-field class="full-width">
                     <mat-select placeholder="Ar planuojate?" formControlName="planning">
-                        <mat-option *ngFor="let item of booleanList" [(value)]="item.id">
+                        <mat-option *ngFor="let item of booleanList" [value]="item.id">
                             {{ item.name }}
                         </mat-option>
                     </mat-select>
